@@ -15,8 +15,24 @@ const App = (props) => {
       <Text style={styles.text}>Redux Middlewares</Text>
       <Button
         title='Load Data'
-        onPress={() => {}}
+        onPress={props.fetchData}
       />
+      <View style={styles.mainContent}>
+        {
+          props.appData.isFetching && <Text>Loading cuy!</Text>
+        }
+        {
+          props.appData.data.length
+            ? props.appData.data.map((person, i) => {
+              return (
+                <View key={i}>
+                  <Text>Name: {person.name}</Text>
+                  <Text>Age: {person.age}</Text>
+                </View>
+              )
+            }) : null
+        }
+      </View>
     </View>
   )
 }
@@ -37,6 +53,9 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white'
+  },
+  mainContent: {
+    margin: 10
   }
 })
 

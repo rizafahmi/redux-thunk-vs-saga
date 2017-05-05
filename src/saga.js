@@ -5,7 +5,7 @@ import getPeople from './api.js'
 const fetchData = function * (action) {
   try {
     const data = yield getPeople()
-    yield put({ type: 'FETCHING_DATA', data })
+    yield put({ type: 'FETCHING_DATA_SUCCESS', data })
   } catch (e) {
     yield put({ type: 'FETCHING_DATA_FAILURE' })
   }
